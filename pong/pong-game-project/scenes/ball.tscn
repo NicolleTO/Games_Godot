@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bkgsgplmdrdk4"]
+
+[ext_resource type="Texture2D" uid="uid://dyrn8q1666xvc" path="res://assets/sprites/bola.png" id="1_7s4qf"]
+[ext_resource type="Script" uid="uid://dl8e654i5okk1" path="res://scripts/ball.gd" id="1_cxlvu"]
+[ext_resource type="AudioStream" uid="uid://34mayj8eqhdq" path="res://assets/sons/impacto-barreira.wav" id="3_f7cbr"]
+[ext_resource type="AudioStream" uid="uid://nshft8rn4o30" path="res://assets/sons/impacto-jogador.wav" id="4_4dx81"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf55o"]
+
+[node name="ball" type="Area2D" unique_id=519434705]
+script = ExtResource("1_cxlvu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1799773548]
+texture = ExtResource("1_7s4qf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=982427437]
+shape = SubResource("RectangleShape2D_yf55o")
+
+[node name="Timer" type="Timer" parent="." unique_id=498793396]
+wait_time = 1.5
+one_shot = true
+
+[node name="impact_barrier_sound" type="AudioStreamPlayer" parent="." unique_id=1500325847]
+stream = ExtResource("3_f7cbr")
+
+[node name="impact_player_sound" type="AudioStreamPlayer" parent="." unique_id=2037796015]
+stream = ExtResource("4_4dx81")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
