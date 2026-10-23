@@ -11,15 +11,17 @@ var player1_points: int = 0
 var player2_points: int = 0
 
 #UI
-@onready var txt_score_p1 : Label = $"../UI/score_panel/text_score_p1"
-@onready var txt_score_p2 : Label = $"../UI/score_panel/text_score_p2"
+@onready var txt_score_p1 : Label = $"../UI/score/text_score_p1"
+@onready var txt_score_p2 : Label = $"../UI/score/text_score_p2"
+
+@onready var pause: Control = $"../UI/pause"
 
 func _ready() -> void:
 	pass
 
-
 func _process(delta: float) -> void:
 	pass
+	
 
 # somente a bola se movimenta, entao nao é necessario especificar
 func _on_goalpost_area_entered(area: Area2D) -> void:
@@ -40,3 +42,8 @@ func _on_goalpost_2_area_entered(area: Area2D) -> void:
 	txt_score_p1.text = str(player1_points)
 	
 	ball.timer_controller()
+
+
+func _on_resume_button_pressed() -> void:
+	pause.visible = false
+	get_tree().paused = false

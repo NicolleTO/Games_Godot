@@ -38,6 +38,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.017020624, 0.017020702, 0.017020648, 1)
 theme_override_colors/font_pressed_color = Color(0.015686275, 0.015686275, 0.015686275, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 10
 theme_override_fonts/font = ExtResource("1_mi6dp")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_n4pas")
