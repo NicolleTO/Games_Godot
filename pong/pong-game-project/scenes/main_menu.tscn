@@ -16,6 +16,17 @@ font_size = 20
 font = ExtResource("1_l6cm7")
 font_size = 70
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu84c"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yf55o"]
+font = ExtResource("1_l6cm7")
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_wu84c"]
+font = ExtResource("1_l6cm7")
+font_size = 20
+
 [node name="main_menu" type="Control" unique_id=1365677201]
 layout_mode = 3
 anchors_preset = 15
@@ -25,7 +36,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wu84c")
 
-[node name="Panel" type="Panel" parent="." unique_id=2062784482]
+[node name="background" type="Panel" parent="." unique_id=2062784482]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,36 +74,142 @@ label_settings = SubResource("LabelSettings_bqqt6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1998325554]
+[node name="main_buttons" type="VBoxContainer" parent="." unique_id=1998325554]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -208.0
-offset_top = -72.0
-offset_right = 208.0
-offset_bottom = 216.0
+offset_left = -192.0
+offset_top = -64.0
+offset_right = 192.0
+offset_bottom = 208.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="play_button" parent="VBoxContainer" unique_id=880351752 instance=ExtResource("2_ekxnf")]
+[node name="play_button" parent="main_buttons" unique_id=880351752 instance=ExtResource("2_ekxnf")]
 layout_mode = 2
 size_flags_vertical = 3
-text = "PLAY"
+text = "JOGAR"
 
-[node name="options_button" parent="VBoxContainer" unique_id=273447684 instance=ExtResource("2_ekxnf")]
+[node name="help_button" parent="main_buttons" unique_id=273447684 instance=ExtResource("2_ekxnf")]
 layout_mode = 2
 size_flags_vertical = 3
-text = "OPTIONS"
+text = "AJUDA"
 
-[node name="quit_button" parent="VBoxContainer" unique_id=1092433287 instance=ExtResource("2_ekxnf")]
+[node name="quit_button" parent="main_buttons" unique_id=1092433287 instance=ExtResource("2_ekxnf")]
 layout_mode = 2
 size_flags_vertical = 3
-text = "QUIT"
+text = "SAIR"
 
-[connection signal="pressed" from="VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/options_button" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]
+[node name="help_panel" type="Panel" parent="." unique_id=379287296]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -160.0
+offset_right = 360.0
+offset_bottom = 296.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wu84c")
+
+[node name="help_title" type="Label" parent="help_panel" unique_id=1543544172]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -360.0
+offset_top = -56.0
+offset_right = 360.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "AJUDA"
+label_settings = SubResource("LabelSettings_yf55o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="score_help_text" type="Label" parent="help_panel" unique_id=1519064623]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -28.0
+offset_right = 360.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Marque 11 pontos para vencer!"
+label_settings = SubResource("LabelSettings_wu84c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="player_help" type="HBoxContainer" parent="help_panel" unique_id=692407141]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -132.0
+offset_right = 232.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="player1_help_text" type="Label" parent="help_panel/player_help" unique_id=101744666]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "P1
+W / S"
+label_settings = SubResource("LabelSettings_wu84c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="player2_help_text" type="Label" parent="help_panel/player_help" unique_id=343916173]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "P2
+down / up"
+label_settings = SubResource("LabelSettings_wu84c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pause_help_text" type="Label" parent="help_panel/player_help" unique_id=941539721]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Pausar
+esc"
+label_settings = SubResource("LabelSettings_wu84c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="back_main_menu_button" parent="help_panel" unique_id=819842248 instance=ExtResource("2_ekxnf")]
+layout_mode = 1
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -56.0
+offset_right = 128.0
+offset_bottom = 0.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "VOLTAR"
+
+[connection signal="pressed" from="main_buttons/play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="main_buttons/help_button" to="." method="_on_help_button_pressed"]
+[connection signal="pressed" from="main_buttons/quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="help_panel/back_main_menu_button" to="." method="_on_back_button_pressed"]
