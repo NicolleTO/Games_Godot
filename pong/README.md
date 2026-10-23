@@ -4,9 +4,9 @@ Jogo criado com base no tutorial: [PONG na Godot 4](https://youtube.com/playlist
 
 ## Personalizações
 
-- Menus início, opções, pausa (carregando....)
+- UI
+  - Menu principal ✔️
+  - Tela de ajuda para mostrar controles de jogo ✔️
+  - Tela de pause
 - Mecânica de vitória
 - Opção de um jogador
-- Recursos de acessibilidade:
-  - Narração de textos
-  - Áudio espacial
