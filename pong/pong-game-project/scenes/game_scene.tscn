@@ -1,48 +1,48 @@
 [gd_scene format=3 uid="uid://ceu771rqxpk0b"]
 
-[ext_resource type="Texture2D" uid="uid://celifuv5smrm2" path="res://assets/sprites/campo-preto.png" id="1_o5qli"]
-[ext_resource type="PackedScene" uid="uid://r43jblrey6t7" path="res://scenes/game_menager.tscn" id="1_tbgi4"]
-[ext_resource type="Texture2D" uid="uid://blrq61hxheinb" path="res://assets/sprites/jogador.png" id="2_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://qet1tfjqc86l" path="res://scenes/player.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://bkgsgplmdrdk4" path="res://scenes/ball.tscn" id="4_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://caq4k7n4g3ky5" path="res://scenes/goalpost.tscn" id="6_tefeu"]
-[ext_resource type="FontFile" uid="uid://bvtqfwr3kbbnt" path="res://assets/fonte/PublicPixel-z84yD.ttf" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://r43jblrey6t7" path="res://scenes/game_menager.tscn" id="1_kk2rg"]
+[ext_resource type="Texture2D" uid="uid://celifuv5smrm2" path="res://assets/sprites/campo-preto.png" id="2_b5spy"]
+[ext_resource type="Texture2D" uid="uid://blrq61hxheinb" path="res://assets/sprites/jogador.png" id="3_utbpp"]
+[ext_resource type="PackedScene" uid="uid://qet1tfjqc86l" path="res://scenes/player.tscn" id="4_mw25s"]
+[ext_resource type="PackedScene" uid="uid://bkgsgplmdrdk4" path="res://scenes/ball.tscn" id="5_tcjrq"]
+[ext_resource type="PackedScene" uid="uid://caq4k7n4g3ky5" path="res://scenes/goalpost.tscn" id="6_rvs2r"]
+[ext_resource type="FontFile" uid="uid://bvtqfwr3kbbnt" path="res://assets/fonte/PublicPixel-z84yD.ttf" id="7_tqxxy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tefeu"]
-font = ExtResource("7_o6xl0")
+font = ExtResource("7_tqxxy")
 font_size = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_85g3d"]
-font = ExtResource("7_o6xl0")
+font = ExtResource("7_tqxxy")
 font_size = 50
 
 [node name="main" type="Node2D" unique_id=426947804]
 
-[node name="GameMenager" parent="." unique_id=1466797680 instance=ExtResource("1_tbgi4")]
+[node name="GameMenager" parent="." unique_id=1466797680 instance=ExtResource("1_kk2rg")]
 
 [node name="background" type="Sprite2D" parent="." unique_id=1826259068]
 position = Vector2(640, 360)
-texture = ExtResource("1_o5qli")
+texture = ExtResource("2_b5spy")
 
 [node name="line" type="Sprite2D" parent="." unique_id=1367903500]
 position = Vector2(640, 359.5)
 scale = Vector2(0.6, 5.6)
-texture = ExtResource("2_0wfyh")
+texture = ExtResource("3_utbpp")
 
-[node name="player1" parent="." unique_id=959133652 groups=["player"] instance=ExtResource("3_sugp2")]
+[node name="player1" parent="." unique_id=959133652 groups=["player"] instance=ExtResource("4_mw25s")]
 position = Vector2(96, 360)
 player1 = true
 
-[node name="player2" parent="." unique_id=1771093223 groups=["player"] instance=ExtResource("3_sugp2")]
+[node name="player2" parent="." unique_id=1771093223 groups=["player"] instance=ExtResource("4_mw25s")]
 position = Vector2(1184, 360)
 
-[node name="ball" parent="." unique_id=519434705 instance=ExtResource("4_jyhfs")]
+[node name="ball" parent="." unique_id=519434705 instance=ExtResource("5_tcjrq")]
 position = Vector2(640, 360)
 
-[node name="goalpost" parent="." unique_id=890791869 instance=ExtResource("6_tefeu")]
+[node name="goalpost" parent="." unique_id=890791869 instance=ExtResource("6_rvs2r")]
 position = Vector2(-65, 0)
 
-[node name="goalpost2" parent="." unique_id=567429266 instance=ExtResource("6_tefeu")]
+[node name="goalpost2" parent="." unique_id=567429266 instance=ExtResource("6_rvs2r")]
 position = Vector2(1345, 0)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1428009743]
