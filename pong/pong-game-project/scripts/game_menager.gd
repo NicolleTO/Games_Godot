@@ -14,8 +14,6 @@ var player2_points: int = 0
 @onready var txt_score_p1 : Label = $"../UI/score/text_score_p1"
 @onready var txt_score_p2 : Label = $"../UI/score/text_score_p2"
 
-@onready var pause: Control = $"../UI/pause"
-
 func _ready() -> void:
 	pass
 
@@ -24,6 +22,7 @@ func _process(delta: float) -> void:
 	
 
 # somente a bola se movimenta, entao nao é necessario especificar
+# gol jogador 1 (jogador 2 marca)
 func _on_goalpost_area_entered(area: Area2D) -> void:
 	
 	impact_goal_sound.play()
@@ -33,7 +32,7 @@ func _on_goalpost_area_entered(area: Area2D) -> void:
 	
 	ball.timer_controller()
 
-
+# gol jogador 2 (jogador 1 marca)
 func _on_goalpost_2_area_entered(area: Area2D) -> void:
 	
 	impact_goal_sound.play()
@@ -43,7 +42,13 @@ func _on_goalpost_2_area_entered(area: Area2D) -> void:
 	
 	ball.timer_controller()
 
+# mudar modo da janela com f11
+func fullscreen_func() -> void:
 
-func _on_resume_button_pressed() -> void:
-	pause.visible = false
-	get_tree().paused = false
+	if Input.is_action_just_pressed("fullscreen"):
+		# se em janela, tela cheia
+		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		# se tela cheia, janela
+		elif DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://caq4k7n4g3ky5" path="res://scenes/goalpost.tscn" id="6_rvs2r"]
 [ext_resource type="FontFile" uid="uid://bvtqfwr3kbbnt" path="res://assets/fonte/PublicPixel-z84yD.ttf" id="7_tqxxy"]
 [ext_resource type="PackedScene" uid="uid://c7jssx548rxc4" path="res://scenes/button.tscn" id="8_b5spy"]
+[ext_resource type="Script" uid="uid://jit0pkn56yer" path="res://scripts/pause.gd" id="8_utbpp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tefeu"]
 font = ExtResource("7_tqxxy")
@@ -93,15 +94,7 @@ label_settings = SubResource("LabelSettings_85g3d")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="pause" type="Control" parent="UI" unique_id=1899649693]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="pause_panel" type="Panel" parent="UI/pause" unique_id=1090412301]
+[node name="pause_panel" type="Panel" parent="UI/score" unique_id=1608759660]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -109,8 +102,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_b5spy")
+script = ExtResource("8_utbpp")
 
-[node name="help_title" type="Label" parent="UI/pause" unique_id=1582899049]
+[node name="help_title" type="Label" parent="UI/score/pause_panel" unique_id=886207626]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -125,7 +119,7 @@ label_settings = SubResource("LabelSettings_utbpp")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="pause_buttons" type="VBoxContainer" parent="UI/pause" unique_id=764858653]
+[node name="pause_buttons" type="VBoxContainer" parent="UI/score/pause_panel" unique_id=976705212]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -140,14 +134,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="resume_button" parent="UI/pause/pause_buttons" unique_id=880351752 instance=ExtResource("8_b5spy")]
+[node name="resume_button" parent="UI/score/pause_panel/pause_buttons" unique_id=880351752 instance=ExtResource("8_b5spy")]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 20
 text = "VOLTAR AO 
 JOGO"
 
-[node name="main_menu_button" parent="UI/pause/pause_buttons" unique_id=766812304 instance=ExtResource("8_b5spy")]
+[node name="main_menu_button" parent="UI/score/pause_panel/pause_buttons" unique_id=386132290 instance=ExtResource("8_b5spy")]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 20
@@ -156,5 +150,3 @@ PRINCIPAL"
 
 [connection signal="area_entered" from="goalpost" to="GameMenager" method="_on_goalpost_area_entered"]
 [connection signal="area_entered" from="goalpost2" to="GameMenager" method="_on_goalpost_2_area_entered"]
-[connection signal="pressed" from="UI/pause/pause_buttons/resume_button" to="GameMenager" method="_on_resume_button_pressed"]
-[connection signal="pressed" from="UI/pause/pause_buttons/main_menu_button" to="GameMenager" method="_on_main_menu_button_pressed"]
