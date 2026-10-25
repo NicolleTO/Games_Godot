@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://caq4k7n4g3ky5" path="res://scenes/goalpost.tscn" id="6_rvs2r"]
 [ext_resource type="FontFile" uid="uid://bvtqfwr3kbbnt" path="res://assets/fonte/PublicPixel-z84yD.ttf" id="7_tqxxy"]
 [ext_resource type="PackedScene" uid="uid://c7jssx548rxc4" path="res://scenes/button.tscn" id="8_b5spy"]
-[ext_resource type="Script" uid="uid://jit0pkn56yer" path="res://scripts/pause.gd" id="8_utbpp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tefeu"]
 font = ExtResource("7_tqxxy")
@@ -95,7 +94,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="pause_panel" type="Panel" parent="UI/score" unique_id=1608759660]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -103,7 +101,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_b5spy")
-script = ExtResource("8_utbpp")
 
 [node name="help_title" type="Label" parent="UI/score/pause_panel" unique_id=886207626]
 layout_mode = 1
@@ -121,6 +118,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="pause_buttons" type="VBoxContainer" parent="UI/score/pause_panel" unique_id=976705212]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -128,9 +126,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -168.0
-offset_top = -80.0
+offset_top = -95.0
 offset_right = 168.0
-offset_bottom = 80.0
+offset_bottom = 176.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
@@ -142,6 +140,12 @@ theme_override_font_sizes/font_size = 20
 text = "VOLTAR AO 
 JOGO"
 
+[node name="restart_button" parent="UI/score/pause_panel/pause_buttons" unique_id=368518800 instance=ExtResource("8_b5spy")]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "REINICIAR"
+
 [node name="main_menu_button" parent="UI/score/pause_panel/pause_buttons" unique_id=386132290 instance=ExtResource("8_b5spy")]
 layout_mode = 2
 size_flags_vertical = 3
@@ -151,3 +155,6 @@ PRINCIPAL"
 
 [connection signal="area_entered" from="goalpost" to="GameMenager" method="_on_goalpost_area_entered"]
 [connection signal="area_entered" from="goalpost2" to="GameMenager" method="_on_goalpost_2_area_entered"]
+[connection signal="pressed" from="UI/score/pause_panel/pause_buttons/resume_button" to="GameMenager" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="UI/score/pause_panel/pause_buttons/restart_button" to="GameMenager" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="UI/score/pause_panel/pause_buttons/main_menu_button" to="GameMenager" method="_on_main_menu_button_pressed"]

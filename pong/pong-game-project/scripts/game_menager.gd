@@ -13,13 +13,20 @@ var player2_points: int = 0
 #UI
 @onready var txt_score_p1 : Label = $"../UI/score/text_score_p1"
 @onready var txt_score_p2 : Label = $"../UI/score/text_score_p2"
+@onready var pause_panel: Panel = $"../UI/score/pause_panel"
 
 func _ready() -> void:
-	pass
+	# avisa que o node deve ser processado SEMPRE
+	# tbm da para mudar direto no Inspector
+	process_mode = Node.PROCESS_MODE_ALWAYS 
+	resume_func()
 
 func _process(delta: float) -> void:
-	pass
+	press_esc()
+	fullscreen_func()
 	
+	
+# ------------ Funções de Pontuação ------------
 
 # somente a bola se movimenta, entao nao é necessario especificar
 # gol jogador 1 (jogador 2 marca)
@@ -42,6 +49,8 @@ func _on_goalpost_2_area_entered(area: Area2D) -> void:
 	
 	ball.timer_controller()
 
+
+# ------------ Função Tela Cheia ------------
 # mudar modo da janela com f11
 func fullscreen_func() -> void:
 
@@ -52,3 +61,31 @@ func fullscreen_func() -> void:
 		# se tela cheia, janela
 		elif DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+# ------------ Funções de Pause ------------
+func resume_func() -> void:
+	get_tree().paused = false
+	pause_panel.hide()
+	
+func pause_func() -> void:
+	get_tree().paused = true
+	pause_panel.show()
+	
+func press_esc() -> void:
+	
+	if Input.is_action_just_pressed("pause") and get_tree().paused:
+		resume_func()
+		print("resume")
+	elif Input.is_action_just_pressed("pause") and get_tree().paused == false:
+		pause_func()
+		print("pause")
+
+func _on_resume_button_pressed() -> void:
+	resume_func()
+
+func _on_main_menu_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+func _on_restart_button_pressed() -> void:
+	get_tree().reload_current_scene()
