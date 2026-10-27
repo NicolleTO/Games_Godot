@@ -3,4 +3,5 @@
 Aprendendo desenvolvimento de jogos ✔️
 
 - Pong (loading...)
+- Asteroids
 - Mario
