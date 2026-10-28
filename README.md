@@ -4,4 +4,7 @@ Aprendendo desenvolvimento de jogos ✔️
 
 - Pong (loading...)
 - Asteroids
-- Mario
+- Visual Novel
+- Street Fight
+- "Pokemon" (game boy)
+- "Mario"
