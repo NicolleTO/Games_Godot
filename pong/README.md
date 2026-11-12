@@ -10,7 +10,7 @@ Jogo criado com base no tutorial: [PONG na Godot 4](https://youtube.com/playlist
   - Menu principal ✔️
   - Tela de ajuda para mostrar controles de jogo ✔️
   - Tela de pause ✔️
-- Mecânica de vitória
+- Mecânica de vitória ✔️
 - Opção de um jogador
 
 <br>
