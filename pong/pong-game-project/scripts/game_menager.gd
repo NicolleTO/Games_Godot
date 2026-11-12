@@ -13,18 +13,24 @@ var player2_points: int = 0
 #UI
 @onready var txt_score_p1 : Label = $"../UI/score/text_score_p1"
 @onready var txt_score_p2 : Label = $"../UI/score/text_score_p2"
+@onready var win_title: Label = $"../UI/score/win_panel/win_title"
+
 @onready var pause_panel: Panel = $"../UI/score/pause_panel"
+@onready var win_panel: Panel = $"../UI/score/win_panel"
+
+
 
 func _ready() -> void:
 	# avisa que o node deve ser processado SEMPRE
 	# tbm da para mudar direto no Inspector
 	process_mode = Node.PROCESS_MODE_ALWAYS 
 	resume_func()
+	win_panel.hide()
 
 func _process(delta: float) -> void:
 	press_esc()
 	fullscreen_func()
-	
+	victory()
 	
 # ------------ Funções de Pontuação ------------
 
@@ -49,6 +55,16 @@ func _on_goalpost_2_area_entered(area: Area2D) -> void:
 	
 	ball.timer_controller()
 
+# ------------ Controle de Vitória ------------
+func victory() -> void:
+	if player1_points == 11:
+		win_title.text = "P1 VENCEU!"
+		get_tree().paused = true
+		win_panel.show()
+	elif player2_points == 11:
+		win_title.text = "P2 VENCEU!"
+		get_tree().paused = true
+		win_panel.show()
 
 # ------------ Função Tela Cheia ------------
 # mudar modo da janela com f11
