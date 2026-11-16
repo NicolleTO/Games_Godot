@@ -1,6 +1,6 @@
 # Games_Godot
 
-Aprende recriando clássicos
+Aprendendo desenvolvimento de jogos recriando clássicos!
 
 - Pong (loading...)
 - Asteroids
