@@ -9,3 +9,4 @@ Aprendendo desenvolvimento de jogos recriando clássicos!
 - Street Fight
 - "Pokemon" (game boy)
 - "Mario"
+- Sonic
