@@ -10,4 +10,3 @@ Aprendendo desenvolvimento de jogos recriando clássicos!
 - "Pokemon" (game boy)
 - "Mario"
 - Sonic
-- DIsney
