@@ -1,7 +1,7 @@
 extends Area2D
 
 # parametros
-const SPEED : int = 500
+var SPEED : int = 500
 const START_POS : Vector2 = Vector2(640, 360) #armazena x y
 var start_direction : Vector2 = Vector2(0, 0)
 var new_direction : Vector2 = Vector2(0, 0)
@@ -35,6 +35,7 @@ func timer_controller() -> void:
 func reset_ball() -> void:
 	position = START_POS
 	chosing_start_direction()
+	SPEED = 500
 	
 #implement: if player1 wins, go to player2 direction, vice-versa
 func chosing_start_direction() -> void:
@@ -67,6 +68,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		new_direction.x *= -1
 		impact_barrier_sound.play()
+		SPEED += 20
 
 
 func _on_timer_timeout() -> void:
